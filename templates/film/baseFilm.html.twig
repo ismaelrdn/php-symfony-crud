@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MOVIE BBDD</title>
+    <style>
+        body {
+            background-color: #f2f2f2; 
+            font-family: Arial, sans-serif; 
+        }
+
+        header {
+            background-color: #333333; 
+            padding: 10px; 
+        }
+
+        .nav-link {
+            color: #ffffff; 
+            margin-right: 10px; 
+            text-decoration: none; 
+        }
+
+  
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar-nav">
+            <a class="nav-link" href="{{ path('home') }}">Inicio</a>
+            <a class="nav-link" href="{{ path('listFilms') }}">Películas</a>
+            <a class="nav-link" href="{{ path('newFilm') }}">Añade una película</a>
+        </nav>
+    </header>
+
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

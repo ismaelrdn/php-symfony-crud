@@ -1,0 +1,11 @@
+{% extends "film/baseFilm.html.twig" %}
+
+{% block content %}
+    <div>
+        <h3 style="color: #333333;">{{ film.title }}</h3>
+        <img src="{{ film.image }}" alt="Poster de la película" style="max-width: 100%; height: auto;">
+        <p style="margin-top: 10px;">Año: {{ film.year }}</p>
+        <p>Puntuación usuarios: {{ film.rating }}</p>
+        <p>{{ film.description }}</p>
+    </div>
+{% endblock %}

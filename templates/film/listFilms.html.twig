@@ -1,0 +1,45 @@
+{% extends "film/baseFilm.html.twig" %}
+
+{% block content %}
+    <h2 style="color: #333333;">TODAS LAS PELÍCULAS</h2>
+
+    {% for message in app.flashes('success') %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    <div class="row">
+        {% for film in films %}
+            <div class="col-md-4">
+                <div class="card" style="margin-bottom: 20px;">
+                    <img src="{{ film.image }}" alt="Poster de la película" class="card-img-top" style="max-width: 100%; height: auto;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ film.title }}</h5>
+                        <p class="card-text">Año: {{ film.year }}</p>
+                        <p class="card-text">Puntuación usuarios: {{ film.rating }}</p>
+                        <div>
+                            <a href="{{ path('getFilm', {'id': film.id}) }}" class="btn btn-primary">Detalles</a>
+                            <a href="{{ path('editFilm', {'id': film.id}) }}" class="btn btn-secondary">Editar</a>
+                            <form id="deleteFilmForm-{{ film.id }}" action="{{ path('deleteFilm', {'id': film.id}) }}" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="button" class="btn btn-danger" onclick="confirmAndSubmit({{ film.id }})">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if loop.index % 3 == 0 %}
+                </div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <script>
+        function confirmAndSubmit(filmId) {
+            if (confirm('¿Estás seguro de que deseas eliminar esta película?')) {
+                document.getElementById('deleteFilmForm-' + filmId).submit();
+            }
+        }
+    </script>
+{% endblock %}
+

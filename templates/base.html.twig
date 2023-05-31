@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Movie DB{% endblock %}</title>
+    <style>
+        body {
+            background-color: #f2f2f2; 
+            font-family: Arial, sans-serif; 
+        }
+
+        h1 {
+            color: #333333; 
+        }
+
+    </style>
+</head>
+<body>
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
+</html>
+
+
